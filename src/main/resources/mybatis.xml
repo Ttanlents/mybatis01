@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE configuration PUBLIC "-//mybatis.org//DTD Config 3.0//EN" "mybatis-3-config.dtd" >
+<configuration>
+    <properties resource="db.properties"/>
+    <settings>
+        <!-- 默认支持骆驼命名法 -->
+        <setting name="mapUnderscoreToCamelCase" value="true"/>
+    </settings>
+    <typeAliases>
+        <package name="com.yjf.entity"/>
+       <!-- <typeAlias type="com.yjf.entity.Student" alias="Student"/>-->
+    </typeAliases>
+    <environments default="mysql">
+        <environment id="mysql">
+            <transactionManager type="JDBC"/>
+            <dataSource type="POOLED">
+                <property name="driver" value="${mysql.driver}"/>
+                <property name="url" value="${mysql.url}"/>
+                <property name="username" value="${mysql.username}"/>
+                <property name="password" value="${mysql.password}"/>
+            </dataSource>
+        </environment>
+    </environments>
+    <mappers>
+        <mapper resource="mapper/studentMapper.xml"/>
+        <mapper resource="mapper/adminMapper.xml"/>
+        <mapper class="com.yjf.dao.HrDao"/>
+    </mappers>
+
+</configuration>
